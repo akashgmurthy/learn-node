@@ -7,16 +7,16 @@ function getName(i) {
       return;
     }
     resolve(names[i]);
-    console.log('do more stuff');
+    console.log('do more stuff'); // Main thread
   });
 }
 
 function main() {
-  getName(2)
-    .then((res) => console.log(res))
-    .catch((err) => console.log(err));
-    console.log('in main');
+  getName(12) // Using a promise makes it async but need not necessarily make it better. For larger functions, there may be blockage
+    .then((res) => console.log(res)) // These happen seperately on the worker thread. thats why it comes last
+    .catch((err) => console.log(err)); // Same as above
+  console.log('in main'); // In the main thread
 }
 
 main();
-console.log('processing ... ');
+console.log('processing ... ');// main thread

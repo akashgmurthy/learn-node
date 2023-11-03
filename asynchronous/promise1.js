@@ -1,7 +1,7 @@
 const fs = require('fs');
-fs.readFile('./data/test.txt', (err, data) => {
- if (err) console.log('Read Error');
- else console.log('Data: ' + data);
+fs.readFile('./data/test.txt', (err, data) => { // Promise will run before the event loop is called. therefore this is last
+  if (err) console.log('Read Error');
+  else console.log('Data: ' + data);
 });
 
 function getName(i) {
@@ -21,7 +21,7 @@ function main() {
   getName(2)
     .then((res) => console.log(res))
     .catch((err) => console.log(err));
-    console.log('in main');
+  console.log('in main');
 }
 
 main();

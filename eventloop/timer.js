@@ -3,9 +3,10 @@ const baz = () => console.log('baz');
 
 const foo = (a) => {
   console.log('foo');
-  setTimeout(function() {
+  setTimeout(function () {
     bar(a);
   }, 0);
+
   baz();
 }
 
